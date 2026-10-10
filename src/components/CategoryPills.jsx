@@ -1,5 +1,4 @@
-import React from 'react';
-import { Sparkles, FileText, BookOpen, Printer, Gift, Wrench } from 'lucide-react';
+import { Sparkles, FileText, BookOpen, Printer, Gift, Wrench, Palette, FolderArchive, Layers } from 'lucide-react';
 import { CATEGORIES } from '../data/pekebookData';
 
 const ICONS_MAP = {
@@ -9,6 +8,9 @@ const ICONS_MAP = {
   Printer: Printer,
   Gift: Gift,
   Wrench: Wrench,
+  Palette: Palette,
+  FolderArchive: FolderArchive,
+  Layers: Layers,
 };
 
 export default function CategoryPills({ activeCategory, onSelectCategory }) {

@@ -23,9 +23,13 @@ export default function ProductCard({ product, onAddToCart, onQuickView }) {
       {/* Top Image Container */}
       <div className="relative w-full aspect-square bg-zinc-50 rounded-xl overflow-hidden mb-3">
         <img
-          src={product.image}
+          src={product.image || '/placeholder-product.svg'}
           alt={product.name}
           loading="lazy"
+          onError={(e) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = '/placeholder-product.svg';
+          }}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
 
@@ -54,9 +58,16 @@ export default function ProductCard({ product, onAddToCart, onQuickView }) {
       {/* Product Information */}
       <div className="flex-1 flex flex-col justify-between">
         <div>
-          <span className="text-[10px] font-semibold text-zinc-400 uppercase tracking-wider block mb-1">
-            {product.category}
-          </span>
+          <div className="flex items-center justify-between gap-1 mb-1">
+            <span className="text-[10px] font-semibold text-zinc-400 uppercase tracking-wider block">
+              {product.category}
+            </span>
+            {product.brand && (
+              <span className="text-[9px] font-bold text-pekepurple-700 bg-pekepurple-50 px-1.5 py-0.5 rounded">
+                {product.brand}
+              </span>
+            )}
+          </div>
           <h3 className="text-xs sm:text-sm font-bold text-zinc-900 line-clamp-2 leading-snug group-hover:text-pekepurple-700 transition-colors">
             {product.name}
           </h3>

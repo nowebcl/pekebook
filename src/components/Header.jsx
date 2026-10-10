@@ -118,7 +118,7 @@ export default function Header({
                     { id: 'inicio', label: 'Inicio', desc: 'Página principal' },
                     { id: 'catalogo', label: 'Catálogo de Insumos', desc: 'Papelería, sublimación y encuadernación' },
                     { id: 'servicios', label: 'Cotizador de Taller', desc: 'Presupuestos de impresión y tesis' },
-                    { id: 'local', label: 'Sucursal Puerto Montt', desc: 'Mañihual 285 Local 3 y FAQs' },
+                    { id: 'local', label: 'Sucursales Puerto Montt', desc: 'Peke 1 (G. Mistral) y Peke 2 (V. Parra)' },
                   ].map((item) => (
                     <button
                       key={item.id}
@@ -147,9 +147,15 @@ export default function Header({
 
               {/* Bottom Drawer info */}
               <div className="pt-6 border-t border-zinc-100 space-y-3 text-xs text-zinc-500">
-                <div className="flex items-center gap-2 text-zinc-800 font-semibold">
-                  <MapPin className="w-4 h-4 text-pekepurple-600" />
-                  <span>Mañihual 285, Local 3, Puerto Montt</span>
+                <div className="space-y-1 text-zinc-800 font-semibold text-[11px]">
+                  <div className="flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-pekepurple-600 flex-shrink-0" />
+                    <span><strong>Peke 1:</strong> Av. Gabriela Mistral 957, L7</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                    <span><strong>Peke 2:</strong> Av. Violeta Parra, L1</span>
+                  </div>
                 </div>
                 <a
                   href={`https://wa.me/${STORE_INFO.whatsappNumber}?text=Hola%20Pekebook!%20Les%20escribo%20desde%20su%20men%C3%BA%20web.`}

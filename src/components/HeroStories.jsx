@@ -54,7 +54,7 @@ export default function HeroStories({ onSelectCategory, onGoToCalculator }) {
 
               {/* Subtitle */}
               <p className="text-sm sm:text-base text-zinc-300 max-w-xl font-normal leading-relaxed">
-                Insumos de sublimación, encuadernación profesional, papeles especiales, regalos y servicios de impresión con atención local en <strong className="text-white font-semibold">Mañihual 285, Local 3</strong>.
+                Insumos de sublimación, encuadernación profesional, papeles especiales, regalos y servicios de impresión con atención local en <strong className="text-white font-semibold">Peke 1 (Av. Gabriela Mistral) y Peke 2 (Av. Violeta Parra)</strong>.
               </p>
 
               {/* Fast Action Buttons */}
@@ -97,7 +97,7 @@ export default function HeroStories({ onSelectCategory, onGoToCalculator }) {
                     className="w-full h-32 sm:h-40 object-cover hover:scale-105 transition-transform duration-500"
                   />
                   <div className="p-2.5 bg-zinc-900/90 text-[11px] font-medium text-zinc-300">
-                    📍 Local en Mañihual 285
+                    📍 Peke 1: Av. Gabriela Mistral 957
                   </div>
                 </div>
 

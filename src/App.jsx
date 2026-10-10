@@ -92,7 +92,10 @@ export default function App() {
       const matchesSearch =
         !q ||
         item.name.toLowerCase().includes(q) ||
-        item.description.toLowerCase().includes(q) ||
+        (item.description && item.description.toLowerCase().includes(q)) ||
+        (item.brand && item.brand.toLowerCase().includes(q)) ||
+        (item.sku && String(item.sku).toLowerCase().includes(q)) ||
+        (item.barcode && String(item.barcode).toLowerCase().includes(q)) ||
         item.category.toLowerCase().includes(q);
       return matchesCategory && matchesSearch;
     });

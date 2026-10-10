@@ -21,7 +21,7 @@ export default function ProductModal({ product, onClose, onAddToCart }) {
 
   const handleWhatsAppInquiry = () => {
     const text = encodeURIComponent(
-      `Hola Pekebook! Me interesa este producto: ${product.name} (${formatCLP(product.price)} x ${quantity} un). ¿Tienen stock en el local de Mañihual 285?`
+      `Hola Pekebook! Me interesa este producto: ${product.name} (${formatCLP(product.price)} x ${quantity} un). ¿Tienen stock disponible en Peke 1 o Peke 2?`
     );
     window.open(`https://wa.me/${STORE_INFO.whatsappNumber}?text=${text}`, '_blank');
   };
@@ -46,8 +46,12 @@ export default function ProductModal({ product, onClose, onAddToCart }) {
           {/* Image */}
           <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-zinc-100">
             <img
-              src={product.image}
+              src={product.image || '/placeholder-product.svg'}
               alt={product.name}
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = '/placeholder-product.svg';
+              }}
               className="w-full h-full object-cover"
             />
             {product.badge && (
@@ -60,9 +64,21 @@ export default function ProductModal({ product, onClose, onAddToCart }) {
           {/* Details */}
           <div className="space-y-3">
             <div>
-              <span className="text-[11px] font-bold text-pekepurple-600 uppercase tracking-wider">
-                {product.category}
-              </span>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-[11px] font-bold text-pekepurple-600 uppercase tracking-wider">
+                  {product.category}
+                </span>
+                {product.brand && (
+                  <span className="text-[10px] font-extrabold text-zinc-600 bg-zinc-100 px-2 py-0.5 rounded-full">
+                    {product.brand}
+                  </span>
+                )}
+                {product.sku && (
+                  <span className="text-[10px] text-zinc-400">
+                    SKU: {product.sku}
+                  </span>
+                )}
+              </div>
               <h2 className="text-base sm:text-lg font-extrabold text-zinc-900 leading-snug mt-1">
                 {product.name}
               </h2>

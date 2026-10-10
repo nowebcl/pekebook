@@ -77,7 +77,11 @@ export default function Footer({ setActiveTab }) {
             <ul className="space-y-2 text-zinc-400">
               <li className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-pekepurple-400 mt-0.5 flex-shrink-0" />
-                <span>{STORE_INFO.address}</span>
+                <div className="space-y-0.5 text-xs">
+                  <div><strong className="text-zinc-200">Peke 1:</strong> Av. Gabriela Mistral 957, Local 7</div>
+                  <div><strong className="text-zinc-200">Peke 2:</strong> Av. Violeta Parra, Local 1</div>
+                  <div className="text-[11px] text-zinc-500">Puerto Montt, Chile</div>
+                </div>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />

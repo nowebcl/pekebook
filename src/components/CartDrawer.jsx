@@ -11,6 +11,7 @@ export default function CartDrawer({
   onClearCart 
 }) {
   const [deliveryMethod, setDeliveryMethod] = useState('retiro'); // 'retiro' | 'envio'
+  const [pickupBranch, setPickupBranch] = useState('peke-1'); // 'peke-1' | 'peke-2'
   const [clientName, setClientName] = useState('');
   const [clientNote, setClientNote] = useState('');
 
@@ -28,7 +29,7 @@ export default function CartDrawer({
     ).join('\n');
 
     const methodLabel = deliveryMethod === 'retiro' 
-      ? '🏬 Retiro en Local (Mañihual 285, Local 3, Puerto Montt)' 
+      ? `🏬 Retiro en ${pickupBranch === 'peke-1' ? 'Peke 1 (Av. Gabriela Mistral 957, Local 7)' : 'Peke 2 (Av. Violeta Parra, Local 1)'}` 
       : '🚚 Despacho a domicilio / Envío por pagar';
 
     const message = 
@@ -112,8 +113,12 @@ ${clientNote ? `\n📝 *Nota / Comentario:* ${clientNote}` : ''}
                       className="p-3 bg-zinc-50 rounded-2xl border border-zinc-200/70 flex gap-3 items-center justify-between"
                     >
                       <img
-                        src={item.image}
+                        src={item.image || '/placeholder-product.svg'}
                         alt={item.name}
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = '/placeholder-product.svg';
+                        }}
                         className="w-14 h-14 rounded-xl object-cover bg-white flex-shrink-0 border border-zinc-150"
                       />
                       <div className="flex-1 min-w-0">
@@ -193,6 +198,45 @@ ${clientNote ? `\n📝 *Nota / Comentario:* ${clientNote}` : ''}
                       <span className="text-[9px] font-normal text-zinc-400">Por pagar (Chile)</span>
                     </button>
                   </div>
+
+                  {deliveryMethod === 'retiro' && (
+                    <div className="pt-2 border-t border-zinc-200/60 space-y-1.5">
+                      <span className="text-[10px] font-semibold text-zinc-500 block">
+                        Sucursal para retirar:
+                      </span>
+                      <div className="grid grid-cols-2 gap-1.5">
+                        <button
+                          type="button"
+                          onClick={() => setPickupBranch('peke-1')}
+                          className={`p-2 rounded-xl text-left border transition-all ${
+                            pickupBranch === 'peke-1'
+                              ? 'bg-zinc-900 text-white border-zinc-900 shadow-xs'
+                              : 'bg-white text-zinc-700 border-zinc-200 hover:border-zinc-300'
+                          }`}
+                        >
+                          <div className="text-[11px] font-extrabold leading-tight">Peke 1 (Central)</div>
+                          <div className={`text-[9px] ${pickupBranch === 'peke-1' ? 'text-zinc-300' : 'text-zinc-500'} truncate`}>
+                            Av. G. Mistral 957, L7
+                          </div>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setPickupBranch('peke-2')}
+                          className={`p-2 rounded-xl text-left border transition-all ${
+                            pickupBranch === 'peke-2'
+                              ? 'bg-zinc-900 text-white border-zinc-900 shadow-xs'
+                              : 'bg-white text-zinc-700 border-zinc-200 hover:border-zinc-300'
+                          }`}
+                        >
+                          <div className="text-[11px] font-extrabold leading-tight">Peke 2</div>
+                          <div className={`text-[9px] ${pickupBranch === 'peke-2' ? 'text-zinc-300' : 'text-zinc-500'} truncate`}>
+                            Av. Violeta Parra, L1
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Optional Client Details */}

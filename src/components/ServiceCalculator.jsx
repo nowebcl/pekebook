@@ -74,7 +74,7 @@ export default function ServiceCalculator() {
 
 ${details}
 
-¿Me indican cómo enviarles los archivos en PDF o imágenes y el tiempo estimado de entrega en el local de Mañihual 285? ¡Gracias!`;
+¿Me indican cómo enviarles los archivos en PDF o imágenes y el tiempo estimado de entrega en el local de Peke 1 (Av. Gabriela Mistral) o Peke 2 (Av. Violeta Parra)? ¡Gracias!`;
 
     window.open(`https://wa.me/${STORE_INFO.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
@@ -394,7 +394,7 @@ ${details}
               </button>
 
               <div className="text-center text-[11px] text-zinc-400">
-                Atención rápida: Lunes a Sábado en Mañihual 285
+                Atención rápida: Lunes a Sábado en Peke 1 y Peke 2
               </div>
             </div>
           </div>
